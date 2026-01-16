@@ -20,10 +20,14 @@ export default function ResultScreen({
 
   const title = getTitleByScore(gameState.score);
 
-  const shareText = `私は上司論破バトルで${gameState.score}点を獲得！称号は「${title}」でした！ #上司論破バトル`;
+  const shareText = `私は上司論破バトルで${gameState.score}点を獲得！
+称号は「${title}」でした！
+
+#上司論破バトル
+https://ronpa-battle.com`;
   const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
     shareText
-  )}&url=${encodeURIComponent("https://ronpa-battle.com")}`;
+  )}`;
 
   return (
     <div className="max-w-2xl mx-auto">
