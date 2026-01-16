@@ -15,7 +15,7 @@ export default function Home() {
     score: 0,
     combo: 0,
     currentBattle: null,
-    selectedPhrases: [],
+    selectedPhrases: [undefined, undefined, undefined],
     gameOver: false,
   });
 
@@ -25,7 +25,7 @@ export default function Home() {
       score: 0,
       combo: 0,
       currentBattle: null,
-      selectedPhrases: [],
+      selectedPhrases: [undefined, undefined, undefined],
       gameOver: false,
     });
     setScreen("battle");
@@ -63,7 +63,7 @@ export default function Home() {
       setGameState({
         ...gameState,
         currentBattle: null,
-        selectedPhrases: [],
+        selectedPhrases: [undefined, undefined, undefined],
       });
       setScreen("battle");
     } else {
@@ -74,7 +74,7 @@ export default function Home() {
         score: 0,
         combo: 0,
         currentBattle: null,
-        selectedPhrases: [],
+        selectedPhrases: [undefined, undefined, undefined],
         gameOver: false,
       });
     }
@@ -91,7 +91,15 @@ export default function Home() {
             #上司論破バトル
           </p>
           <p className="text-gray-400 text-xs">
-            Presented by ZEROVENTURE
+            Presented by{" "}
+            <a
+              href="https://zero-venture.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-purple-400 hover:text-purple-300 underline transition-colors"
+            >
+              ZEROVENTURE
+            </a>
           </p>
         </header>
 

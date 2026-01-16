@@ -80,7 +80,17 @@ https://ronpa-battle.zero-venture.com`;
         {/* Footer */}
         <div className="mt-8 text-center">
           <p className="text-gray-400 text-sm mb-1">#上司論破バトル</p>
-          <p className="text-gray-500 text-xs">Presented by ZEROVENTURE</p>
+          <p className="text-gray-500 text-xs">
+            Presented by{" "}
+            <a
+              href="https://zero-venture.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-purple-400 hover:text-purple-300 underline transition-colors"
+            >
+              ZEROVENTURE
+            </a>
+          </p>
         </div>
       </div>
     </div>
