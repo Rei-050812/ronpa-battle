@@ -36,7 +36,17 @@ OK時(40-59点)の100例:
 KO時(0-39点)の100例:
 「意味不明！」「何言ってる？」「支離滅裂！」「論破失敗！」「完全敗北！」「負けた！」「ダメだ！」「全然ダメ！」「意味わからん！」「論理崩壊！」「論破できてない！」「上司の勝ち！」「全く通らない！」「反論になってない！」「完全に負け！」「理屈が通らない！」「論理ゼロ！」「完全KO！」「上司の圧勝！」「論破不可能！」「全然ダメだ！」「意味が分からない！」「論理性皆無！」「反論失敗！」「完全に意味不明！」「上司に完敗！」「論理が破綻！」「全く論破できてない！」「反論不成立！」「完全に敗北！」「理屈になってない！」「論理的に破綻！」「全然反論できてない！」「上司に負けた！」「論破ならず！」「完全に通らない！」「意味をなしてない！」「論理ゼロ点！」「反論にならない！」「完全敗北だ！」「理屈が立たない！」「論理が通らない！」「全く論破できない！」「上司の完勝！」「論破不能！」「完全に無理！」「意味が通じない！」「論理性なし！」「反論不可！」「完全に負けてる！」「理屈が合わない！」「論理破綻してる！」「全然ダメだこれ！」「上司に完全敗北！」「論破できず！」「完全に意味不明だ！」「意味が分からんぞ！」「論理的に無理！」「反論として成立せず！」「完全に敗北した！」「理屈にならない！」「論理が成立しない！」「全く論破不可能！」「上司に完敗だ！」「論破失敗した！」「完全に通用しない！」「意味をなさない！」「論理ゼロだ！」「反論できてない！」「完全に負けてる！」「理屈が立ってない！」「論理が全く通らない！」「全然論破できてない！」「上司の勝利だ！」「論破不可だ！」「完全に無理がある！」「意味が全く通じない！」「論理性が皆無！」「反論不可能！」「完全に敗北してる！」「理屈が合ってない！」「論理的に破綻してる！」「全くダメだこれは！」「上司に完全に負けた！」「論破できなかった！」「完全に意味が不明！」「意味が分からないぞ！」「論理的に成立しない！」「反論として不成立！」「完全に敗北だ！」「理屈になってないぞ！」「論理が全く成立しない！」「全く論破不能だ！」「上司に完敗した！」「論破失敗だ！」「完全に通用してない！」「意味をなしてないぞ！」「論理ゼロだな！」「反論できてないぞ！」
 
-出力はJSON形式のみで、他の説明は不要です。`;
+【出力フォーマット】
+必ず以下のJSON形式で出力してください。他のテキストは一切含めないでください:
+{
+  "score": 85,
+  "coherence": 90,
+  "rebuttal": 80,
+  "comment": "完璧な論破！",
+  "result": "perfect"
+}
+
+resultフィールドは必ず "perfect", "good", "ok", "ko" のいずれかにしてください。`;
 
 export async function POST(request: Request) {
   try {
@@ -82,11 +92,25 @@ export async function POST(request: Request) {
 
     const data: JudgeResponse = JSON.parse(jsonMatch[0]);
 
+    // Debug log
+    console.log("Judge API Response:", {
+      score: data.score,
+      result: data.result,
+      comment: data.comment,
+      commentLength: data.comment?.length
+    });
+
     // Validate result field
     const validResults: Array<"perfect" | "good" | "ok" | "ko"> = ["perfect", "good", "ok", "ko"];
     if (!validResults.includes(data.result)) {
       console.error("Invalid result from AI:", data.result);
       data.result = "ok" as const; // Default to "ok" if invalid
+    }
+
+    // Validate comment field
+    if (!data.comment || data.comment.trim() === "") {
+      console.error("Empty comment from AI, using default");
+      data.comment = "判定完了！";
     }
 
     return NextResponse.json(data);
