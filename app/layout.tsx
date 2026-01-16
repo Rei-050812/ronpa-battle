@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "上司論破バトル",
     description: "ブラック上司を論破せよ！",
-    url: "https://ronpa-battle.com",
+    url: "https://ronpa-battle.zero-venture.com",
     siteName: "上司論破バトル",
     locale: "ja_JP",
     type: "website",

@@ -200,8 +200,9 @@ MIT License
 ## 📧 お問い合わせ
 
 - ハッシュタグ: #上司論破バトル
-- URL: ronpa-battle.com
+- URL: https://ronpa-battle.zero-venture.com
 
 ---
 
+Presented by **ZEROVENTURE**
 Built with ❤️ using Next.js and Claude AI

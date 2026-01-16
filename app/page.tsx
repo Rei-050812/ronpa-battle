@@ -87,8 +87,11 @@ export default function Home() {
           <h1 className="text-5xl font-bold text-white mb-2 tracking-wider game-title">
             上司論破バトル
           </h1>
-          <p className="text-gray-300 text-sm">
-            #上司論破バトル | ronpa-battle.com
+          <p className="text-gray-300 text-sm mb-1">
+            #上司論破バトル
+          </p>
+          <p className="text-gray-400 text-xs">
+            Presented by ZEROVENTURE
           </p>
         </header>
 

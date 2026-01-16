@@ -24,7 +24,7 @@ export default function ResultScreen({
 称号は「${title}」でした！
 
 #上司論破バトル
-https://ronpa-battle.com`;
+https://ronpa-battle.zero-venture.com`;
   const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
     shareText
   )}`;
@@ -78,8 +78,9 @@ https://ronpa-battle.com`;
         </div>
 
         {/* Footer */}
-        <div className="mt-8 text-center text-gray-400 text-sm">
-          <p>#上司論破バトル | ronpa-battle.com</p>
+        <div className="mt-8 text-center">
+          <p className="text-gray-400 text-sm mb-1">#上司論破バトル</p>
+          <p className="text-gray-500 text-xs">Presented by ZEROVENTURE</p>
         </div>
       </div>
     </div>
