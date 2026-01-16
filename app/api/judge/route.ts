@@ -82,6 +82,13 @@ export async function POST(request: Request) {
 
     const data: JudgeResponse = JSON.parse(jsonMatch[0]);
 
+    // Validate result field
+    const validResults: Array<"perfect" | "good" | "ok" | "ko"> = ["perfect", "good", "ok", "ko"];
+    if (!validResults.includes(data.result)) {
+      console.error("Invalid result from AI:", data.result);
+      data.result = "ok" as const; // Default to "ok" if invalid
+    }
+
     return NextResponse.json(data);
   } catch (error) {
     console.error("Error judging response:", error);

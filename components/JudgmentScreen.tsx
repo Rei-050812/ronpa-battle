@@ -44,7 +44,7 @@ export default function JudgmentScreen({
     },
   };
 
-  const config = resultConfig[judgmentData.result];
+  const config = resultConfig[judgmentData.result] || resultConfig.ok;
 
   return (
     <div className="max-w-2xl mx-auto">
